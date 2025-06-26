@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/dialog_edge"
+    android:windowTranslucentStatus="false"
+    android:windowFullscreen="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dark"
+        android:id="@+id/theme_bg"
+        tools:ignore="UselessParent">
+        
+        <View
+            android:alpha="0.9"
+            android:background="@drawable/bg_login_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_margin="@dimen/_25sdp"
+            android:id="@+id/ll_app_logo"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            tools:ignore="RelativeOverlap">
+
+            <androidx.nemosofts.material.ImageHelperView
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/logo"
+                app:hv_corner_radius="@dimen/_3sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_logo"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp">
+
+            <androidx.nemosofts.material.ImageHelperView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/todo"
+                android:padding="@dimen/_7sdp"
+                android:src="?nsPrimary"
+                app:hv_corner_radius="@dimen/_100sdp" />
+
+            <androidx.nemosofts.material.ImageHelperView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/todo"
+                android:padding="@dimen/_20sdp"
+                android:src="@drawable/ic_profile" />
+
+            <androidx.nemosofts.material.ProgressBarView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:indeterminate="true"
+                app:pb_color="#FFFFFF"
+                app:pb_max_sweep_angle="300"
+                app:pb_min_sweep_angle="10"
+                app:pb_rotation_speed="1.0"
+                app:pb_stroke_width="@dimen/_2sdp"
+                app:pb_sweep_speed="1.0" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/rl_logo"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dialog_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome"
+                android:textStyle="bold"
+                android:textColor="?nsTitle"
+                android:textSize="@dimen/_17ssp" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/getting_your_profile_ready"
+                android:textColor="?nsTitleSub"
+                android:textSize="@dimen/_14ssp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

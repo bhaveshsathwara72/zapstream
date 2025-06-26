@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dark"
+    tools:context=".activity.UsersListActivity"
+    android:id="@+id/theme_bg">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_30sdp"
+        android:id="@+id/ll_app_logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <androidx.nemosofts.material.ImageHelperView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/logo"
+            app:hv_corner_radius="@dimen/_3sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13ssp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_above="@id/ll_user_add"
+        android:layout_below="@id/ll_app_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_centerInParent="true"
+            android:id="@+id/rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/_25sdp"
+            android:paddingEnd="@dimen/_25sdp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:id="@+id/ll_user_add"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingStart="@dimen/_6sdp"
+        android:paddingEnd="@dimen/_6sdp"
+        android:paddingTop="@dimen/_2sdp"
+        android:paddingBottom="@dimen/_2sdp"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:background="@drawable/focused_add_btn"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:padding="@dimen/_5sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_user_add"
+            app:tint="@color/white"
+            android:contentDescription="@string/todo"/>
+
+        <TextView
+            android:text="@string/add_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13ssp"
+            android:layout_marginEnd="@dimen/_7sdp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

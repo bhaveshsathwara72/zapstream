@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_5sdp"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:id="@+id/rl_users_list">
+
+    <View
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignStart="@+id/rl_users_bg"
+        android:layout_alignTop="@+id/rl_users_bg"
+        android:layout_alignEnd="@+id/rl_users_bg"
+        android:layout_alignBottom="@+id/tv_users_list_sub"
+        android:background="?attr/selectableItemBackground" />
+
+    <RelativeLayout
+        android:id="@+id/rl_users_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:background="@drawable/focused_bg_card_users">
+
+        <androidx.nemosofts.material.ImageHelperView
+            android:id="@+id/iv_color_bg"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/gradient_1"
+            app:hv_corner_radius="@dimen/_100sdp" />
+
+        <View
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignStart="@+id/iv_color_bg"
+            android:layout_alignTop="@+id/iv_color_bg"
+            android:layout_alignEnd="@+id/iv_color_bg"
+            android:layout_alignBottom="@+id/iv_color_bg"
+            android:background="?attr/selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/tv_users_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:maxLines="1"
+            android:ellipsize="none"
+            android:text="A"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_60ssp"
+            android:paddingBottom="@dimen/_3sdp"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_users_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:textAlignment="center"
+        android:maxLines="1"
+        android:text="@string/app_name"
+        android:textColor="?nsTitle"
+        android:textSize="@dimen/_12ssp"
+        android:layout_below="@id/rl_users_bg"
+        android:layout_alignEnd="@+id/rl_users_bg"
+        android:layout_alignStart="@+id/rl_users_bg"/>
+
+    <TextView
+        android:id="@+id/tv_users_list_sub"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColor="?nsTitleSub"
+        android:textSize="@dimen/_8ssp"
+        android:layout_below="@id/tv_users_list"
+        android:layout_alignEnd="@+id/rl_users_bg"
+        android:layout_alignStart="@+id/rl_users_bg"/>
+
+</RelativeLayout>

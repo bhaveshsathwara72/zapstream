@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Push notification ID-->
+    <string name="onesignal_app_id">da37229a-3865-4ecb-847f-b6c3b8041ed4</string>
+
+</resources>

@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--  ThemeDialog  -->
+    <style name="ThemeDialog" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColor">?nsTitle</item>
+        <item name="android:textColorAlertDialogListItem">?nsTitle</item>
+        <item name="android:textColorSecondary">?nsTitle</item>
+        <!-- Used for the background -->
+        <item name="android:background">?nsDialogBackground</item>
+        <!-- Used for the Button -->
+        <item name="buttonBarNegativeButtonStyle">@style/ButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/ButtonStyle</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">?nsTitle</item>
+    </style>
+
+    <style name="dialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
+        <item name="android:windowExitAnimation">@anim/slide_down_dialog</item>
+    </style>
+
+    <style name="RatingBar_white" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="colorControlNormal">#40FFFFFF</item>
+        <item name="colorControlActivated">@color/color_select</item>
+    </style>
+
+    <style name="Widget.App.RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="buttonTint">?nsWhite</item>
+        <item name="buttonIconTint">?nsWhite</item>
+    </style>
+
+    <style name="FullScreenDialogTheme" parent="MaterialAlertDialog.Material3">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>

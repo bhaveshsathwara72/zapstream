@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?nsBlack"
+    android:id="@+id/player_edge"
+    android:gravity="center"
+    android:keepScreenOn="true">
+
+    <RelativeLayout
+        android:id="@+id/rl_dialog_rv"
+        android:background="?nsBlack"
+        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/rv_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="true"
+            android:scrollbarSize="5dp"
+            android:scrollbarThumbVertical="@drawable/scrollbar"
+            android:scrollbars="vertical"
+            android:paddingEnd="@dimen/_30sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:clipToPadding="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_player_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@+id/rl_dialog"
+        android:layout_toEndOf="@+id/rl_dialog_rv">
+
+        <nemosofts.streambox.utils.player.CustomPlayerView
+            android:id="@+id/nSoftsPlayerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            app:controller_layout_id="@layout/custom_controls_live"
+            app:surface_type="texture_view" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.nemosofts.material.ProgressBarView
+                android:id="@+id/pb_player"
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_centerInParent="true"
+                android:indeterminate="true"
+                app:pb_color="#FFee44"
+                app:pb_colors="@array/progress_colors"
+                app:pb_max_sweep_angle="300"
+                app:pb_min_sweep_angle="10"
+                app:pb_rotation_speed="1.0"
+                app:pb_stroke_width="@dimen/_2sdp"
+                app:pb_sweep_speed="1.0" />
+
+            <ImageView
+                android:id="@+id/iv_reset"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:alpha="0.8"
+                android:background="@drawable/focused_btn_play"
+                android:contentDescription="@string/app_name"
+                android:focusable="true"
+                android:focusableInTouchMode="false"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:src="@drawable/ic_reset"
+                android:visibility="gone"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+        <View
+            android:focusable="true"
+            android:focusableInTouchMode="false"
+            android:background="@drawable/focused_home_selector"
+            android:visibility="gone"
+            android:id="@+id/vw_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_dialog"
+        android:background="?nsBlack"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_media"
+            android:layout_width="@dimen/_235sdp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/back_player_info"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/focused_btn_play"
+                    android:contentDescription="@string/todo"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingEnd="@dimen/_15sdp"
+                    android:text="Information"
+                    android:textColor="?nsWhite"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="#12FFFFFF" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@drawable/bg_card_info"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_2sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:contentDescription="@string/todo"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@drawable/ic_series"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/video_tracks"
+                            android:textColor="?nsWhite"
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/text_info_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_3sdp"
+                        android:text="@string/app_name"
+                        android:textColor="?nsWhite"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@drawable/bg_card_info"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_2sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:contentDescription="@string/todo"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@drawable/ic_audiotrack"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/audio_tracks"
+                            android:textColor="?nsWhite"
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/text_info_audio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_3sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="@string/app_name"
+                        android:textColor="?nsWhite"
+                        android:textSize="@dimen/_13sdp" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
