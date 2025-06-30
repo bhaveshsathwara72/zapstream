@@ -184,7 +184,9 @@ public class OneUIActivity extends AppCompatActivity {
         }
 
 
-        showMovableTrialPopup("⏳ " + spHelper.getPendingDays() + " days left in your trial");
+        ((TextView) findViewById(R.id.tv_trail_period)).setText(spHelper.getPendingDays() + " days left in your trial period");
+//        showMovableTrialPopup("⏳ " + spHelper.getPendingDays() + " days left in your trial");
+
     }
 
     private void setupBackPressHandler() {
