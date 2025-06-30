@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    namespace 'nemosofts.streambox'
+    namespace 'com.zapstream.player.app'
     compileSdk 35
 
     defaultConfig {
         applicationId "com.zapstream.player.app"
         minSdk 23
         targetSdk 35
-        versionCode 1
+        versionCode 4
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

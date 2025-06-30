@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/theme_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_dark"
-    android:id="@+id/theme_bg">
+    android:background="@drawable/bg_dark">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,10 +16,10 @@
         android:paddingEnd="@dimen/_25sdp">
 
         <RelativeLayout
-            android:layout_marginBottom="@dimen/_5sdp"
             android:id="@+id/rl_top"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:layout_weight="0.3">
 
             <androidx.nemosofts.material.ImageHelperView
@@ -29,7 +29,7 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/logo"
-                app:hv_corner_radius="@dimen/_3sdp"/>
+                app:hv_corner_radius="@dimen/_3sdp" />
 
             <TextView
                 android:id="@+id/iv_app_name"
@@ -43,25 +43,37 @@
                 android:textSize="@dimen/_16ssp"
                 tools:ignore="RelativeOverlap" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRegisteredDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="Registered date"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp"
+                tools:ignore="RelativeOverlap" />
+
         </RelativeLayout>
 
         <RelativeLayout
-            android:orientation="vertical"
             android:id="@+id/rl_center"
-            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:baselineAligned="false"
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:background="@drawable/bg_card_sub"
-                android:backgroundTint="?nsTitle"
-                android:layout_centerVertical="true"
                 android:id="@+id/rv_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/bg_card_sub"
+                android:backgroundTint="?nsTitle"
                 android:padding="@dimen/_10sdp" />
 
         </RelativeLayout>
@@ -81,20 +93,20 @@
                 android:textSize="@dimen/_10ssp" />
 
             <TextView
-                android:layout_marginStart="@dimen/_3sdp"
                 android:id="@+id/tv_terms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
-                android:text="@string/terms_and_conditions"
-                android:textAlignment="center"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingEnd="@dimen/_5sdp"
-                android:textColor="?nsPrimary"
-                android:textSize="@dimen/_10ssp"
+                android:background="@drawable/focused_img_selector"
                 android:focusable="true"
                 android:focusableInTouchMode="false"
-                android:background="@drawable/focused_img_selector" />
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="@string/terms_and_conditions"
+                android:textAlignment="center"
+                android:textColor="?nsPrimary"
+                android:textSize="@dimen/_10ssp" />
 
         </LinearLayout>
 

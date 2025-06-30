@@ -15,7 +15,7 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/rl_dialog">
 
-        <nemosofts.streambox.utils.player.CustomPlayerView
+        <com.zapstream.player.app.utils.player.CustomPlayerView
             android:id="@+id/nSoftsPlayerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

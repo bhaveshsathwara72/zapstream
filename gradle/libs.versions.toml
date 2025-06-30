@@ -1,5 +1,5 @@
 [versions]
-billing = "6.0.1"
+billing = "7.1.1"
 commonsIo = "2.18.0"
 appcompat = "1.7.0"
 constraintlayout = "2.2.1"

@@ -2,11 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/theme_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ui.OneUIActivity"
     android:background="@drawable/bg_dark"
-    android:id="@+id/theme_bg">
+    android:fitsSystemWindows="true"
+    tools:context=".activity.ui.OneUIActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +31,7 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/logo"
-                app:hv_corner_radius="@dimen/_3sdp"/>
+                app:hv_corner_radius="@dimen/_3sdp" />
 
             <TextView
                 android:id="@+id/iv_app_name"
@@ -48,177 +49,177 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_toStartOf="@+id/ll_toolbar_not"
                 android:layout_toEndOf="@+id/iv_app_name"
-                android:textColor="@color/white"
                 android:textAlignment="center"
-                android:textSize="@dimen/_11ssp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_10sdp"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11ssp" />
 
             <LinearLayout
                 android:id="@+id/ll_toolbar_not"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/iv_wifi"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
+                    android:contentDescription="@string/todo"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:padding="@dimen/_8sdp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_wifi"
-                    app:tint="@color/white"
-                    android:contentDescription="@string/todo"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"/>
+                    app:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_notifications"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:padding="@dimen/_8sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_round_notifications"
-                    app:tint="@color/white"
+                    android:background="@drawable/focused_icon_selector"
                     android:contentDescription="@string/todo"
                     android:focusable="true"
                     android:focusableInTouchMode="false"
-                    android:background="@drawable/focused_icon_selector"/>
+                    android:padding="@dimen/_8sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_round_notifications"
+                    app:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_file_download"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:padding="@dimen/_8sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/iv_downloading"
-                    app:tint="@color/white"
+                    android:background="@drawable/focused_icon_selector"
                     android:contentDescription="@string/todo"
                     android:focusable="true"
                     android:focusableInTouchMode="false"
-                    android:background="@drawable/focused_icon_selector"/>
+                    android:padding="@dimen/_8sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/iv_downloading"
+                    app:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_radio"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:padding="@dimen/_8sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_radio"
-                    app:tint="@color/white"
+                    android:background="@drawable/focused_icon_selector"
                     android:contentDescription="@string/todo"
                     android:focusable="true"
                     android:focusableInTouchMode="false"
-                    android:background="@drawable/focused_icon_selector"/>
+                    android:padding="@dimen/_8sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_radio"
+                    app:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_profile"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:padding="@dimen/_7sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_outline_person"
-                    app:tint="@color/white"
+                    android:background="@drawable/focused_icon_selector"
                     android:contentDescription="@string/todo"
                     android:focusable="true"
                     android:focusableInTouchMode="false"
-                    android:background="@drawable/focused_icon_selector"/>
+                    android:padding="@dimen/_7sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_outline_person"
+                    app:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_profile_re"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:padding="@dimen/_6sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_people"
-                    app:tint="@color/white"
+                    android:background="@drawable/focused_icon_selector"
                     android:contentDescription="@string/todo"
                     android:focusable="true"
                     android:focusableInTouchMode="false"
-                    android:background="@drawable/focused_icon_selector"/>
+                    android:padding="@dimen/_6sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_people"
+                    app:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_settings"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:padding="@dimen/_8sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_player_setting"
-                    app:tint="@color/white"
+                    android:background="@drawable/focused_icon_selector"
                     android:contentDescription="@string/todo"
                     android:focusable="true"
                     android:focusableInTouchMode="false"
-                    android:background="@drawable/focused_icon_selector"/>
+                    android:padding="@dimen/_8sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_player_setting"
+                    app:tint="@color/white" />
 
             </LinearLayout>
 
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/_3sdp"
             android:id="@+id/ll_center"
-            android:orientation="horizontal"
-            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_weight="2"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/bg_card_tv"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:background="@drawable/bg_card_tv"
                 tools:ignore="NestedWeights">
 
                 <View
                     android:id="@+id/vw_live_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@drawable/bg_card_tv"
                     android:backgroundTint="#B3000000"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <ProgressBar
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:id="@+id/pb_live_tv"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:progressDrawable="@drawable/pb_gradient"
                     android:max="100"
                     android:progress="0"
-                    android:visibility="gone"/>
+                    android:progressDrawable="@drawable/pb_gradient"
+                    android:visibility="gone" />
 
                 <ImageView
-                    app:tint="#41000000"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/pattern"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/todo" />
+                    android:contentDescription="@string/todo"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pattern"
+                    app:tint="#41000000" />
 
                 <androidx.nemosofts.material.ShimmerEffects
-                    android:visibility="visible"
                     android:id="@+id/shimmer_view_live"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:shimmer_duration="3500"
-                    app:shimmer_direction="left_to_right"
+                    android:layout_centerInParent="true"
+                    android:visibility="visible"
                     app:shimmer_base_alpha="0"
-                    android:layout_centerInParent="true">
+                    app:shimmer_direction="left_to_right"
+                    app:shimmer_duration="3500">
 
                     <ImageView
-                        app:tint="#B3000000"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/pattern"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:contentDescription="@string/todo" />
+                        android:contentDescription="@string/todo"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/pattern"
+                        app:tint="#B3000000" />
 
                 </androidx.nemosofts.material.ShimmerEffects>
 
@@ -226,31 +227,31 @@
                     android:id="@+id/select_live"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/focused_home_selector"
                     android:contentDescription="@string/todo"
                     android:focusable="true"
-                    android:focusableInTouchMode="false"
-                    android:background="@drawable/focused_home_selector">
+                    android:focusableInTouchMode="false">
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"  />
+                        android:background="?attr/selectableItemBackground" />
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:gravity="center"
+                        android:orientation="vertical"
                         tools:ignore="RelativeOverlap,UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="@dimen/_60sdp"
                             android:layout_height="@dimen/_60sdp"
-                            android:src="@drawable/ic_tv"
-                            app:tint="@color/white"
                             android:layout_marginBottom="@dimen/_2sdp"
-                            android:contentDescription="@string/todo"/>
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_tv"
+                            app:tint="@color/white" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -258,45 +259,45 @@
                             android:text="@string/live_tv_home"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_19ssp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/ll_tv_auto_renew"
-                        android:background="@drawable/bg_home_last_up"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
                         android:layout_alignParentBottom="true"
-                        android:gravity="center"
+                        android:background="@drawable/bg_home_last_up"
                         android:focusable="false"
-                        android:focusableInTouchMode="false">
+                        android:focusableInTouchMode="false"
+                        android:gravity="center">
 
                         <TextView
                             android:id="@+id/tv_tv_auto_renew"
-                            android:layout_gravity="center"
-                            android:text="Last updated: 3 secs ago"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_8ssp"
-                            android:lines="1"
+                            android:layout_gravity="center"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_marginEnd="@dimen/_5sdp"
-                            tools:ignore="HardcodedText"/>
+                            android:lines="1"
+                            android:text="Last updated: 3 secs ago"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_8ssp"
+                            tools:ignore="HardcodedText" />
 
                         <ImageView
                             android:id="@+id/iv_tv_auto_renew"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:padding="@dimen/_2sdp"
                             android:layout_width="@dimen/_30sdp"
                             android:layout_height="@dimen/_20sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
                             android:background="@drawable/bg_autorenew"
-                            android:src="@drawable/ic_repeate"
                             android:contentDescription="@string/todo"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
+                            android:padding="@dimen/_2sdp"
+                            android:src="@drawable/ic_repeate"
                             app:tint="?nsBlack" />
 
                     </LinearLayout>
@@ -306,16 +307,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:layout_margin="@dimen/_4sdp"
                         android:background="@drawable/bg_save_btn"
+                        android:paddingStart="@dimen/_4sdp"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:paddingEnd="@dimen/_4sdp"
+                        android:paddingBottom="@dimen/_3sdp"
                         android:text="0"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_8ssp"
                         android:textStyle="bold"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:paddingStart="@dimen/_4sdp"
-                        android:paddingEnd="@dimen/_4sdp"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:paddingTop="@dimen/_2sdp"
                         tools:ignore="HardcodedText" />
 
                 </RelativeLayout>
@@ -323,17 +324,17 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:baselineAligned="false">
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
 
                     <RelativeLayout
                         android:layout_width="0dp"
@@ -347,46 +348,46 @@
 
                         <View
                             android:id="@+id/vw_movie"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@drawable/bg_card_movies"
                             android:backgroundTint="#B3000000"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
 
                         <ProgressBar
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:id="@+id/pb_movie"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:progressDrawable="@drawable/pb_movie"
                             android:max="100"
                             android:progress="0"
-                            android:visibility="gone"/>
+                            android:progressDrawable="@drawable/pb_movie"
+                            android:visibility="gone" />
 
                         <ImageView
-                            app:tint="#41000000"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/pattern"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:contentDescription="@string/todo" />
+                            android:contentDescription="@string/todo"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/pattern"
+                            app:tint="#41000000" />
 
                         <androidx.nemosofts.material.ShimmerEffects
                             android:id="@+id/shimmer_view_movie"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:shimmer_duration="3500"
-                            app:shimmer_direction="left_to_right"
+                            android:layout_centerInParent="true"
                             app:shimmer_base_alpha="0"
-                            android:layout_centerInParent="true">
+                            app:shimmer_direction="left_to_right"
+                            app:shimmer_duration="3500">
 
                             <ImageView
-                                app:tint="#B3000000"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/pattern"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:contentDescription="@string/todo" />
+                                android:contentDescription="@string/todo"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/pattern"
+                                app:tint="#B3000000" />
 
                         </androidx.nemosofts.material.ShimmerEffects>
 
@@ -394,31 +395,31 @@
                             android:id="@+id/select_movie"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@drawable/focused_home_selector"
                             android:contentDescription="@string/todo"
                             android:focusable="true"
-                            android:focusableInTouchMode="false"
-                            android:background="@drawable/focused_home_selector">
+                            android:focusableInTouchMode="false">
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="?attr/selectableItemBackground"  />
+                                android:background="?attr/selectableItemBackground" />
 
                             <LinearLayout
-                                android:orientation="vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:gravity="center"
+                                android:orientation="vertical"
                                 tools:ignore="RelativeOverlap,UseCompoundDrawables">
 
                                 <ImageView
                                     android:layout_width="@dimen/_50sdp"
                                     android:layout_height="@dimen/_50sdp"
-                                    android:src="@drawable/ic_movie"
-                                    app:tint="@color/white"
                                     android:layout_marginBottom="@dimen/_2sdp"
-                                    android:contentDescription="@string/todo" />
+                                    android:contentDescription="@string/todo"
+                                    android:src="@drawable/ic_movie"
+                                    app:tint="@color/white" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -432,39 +433,39 @@
 
                             <LinearLayout
                                 android:id="@+id/ll_movie_auto_renew"
-                                android:background="@drawable/bg_home_last_up"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_30sdp"
                                 android:layout_alignParentBottom="true"
-                                android:gravity="center"
+                                android:background="@drawable/bg_home_last_up"
                                 android:focusable="false"
-                                android:focusableInTouchMode="false">
+                                android:focusableInTouchMode="false"
+                                android:gravity="center">
 
                                 <TextView
                                     android:id="@+id/tv_movie_auto_renew"
-                                    android:layout_gravity="center"
-                                    android:text="Last updated: 3 secs ago"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_8ssp"
-                                    android:lines="1"
+                                    android:layout_gravity="center"
                                     android:layout_marginStart="@dimen/_5sdp"
                                     android:layout_marginEnd="@dimen/_5sdp"
-                                    tools:ignore="HardcodedText"/>
+                                    android:lines="1"
+                                    android:text="Last updated: 3 secs ago"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_8ssp"
+                                    tools:ignore="HardcodedText" />
 
                                 <ImageView
                                     android:id="@+id/iv_movie_auto_renew"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:padding="@dimen/_2sdp"
                                     android:layout_width="@dimen/_30sdp"
                                     android:layout_height="@dimen/_20sdp"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:layout_marginEnd="@dimen/_5sdp"
                                     android:background="@drawable/bg_autorenew"
-                                    android:src="@drawable/ic_repeate"
                                     android:contentDescription="@string/todo"
                                     android:focusable="false"
                                     android:focusableInTouchMode="false"
+                                    android:padding="@dimen/_2sdp"
+                                    android:src="@drawable/ic_repeate"
                                     app:tint="?nsBlack" />
 
                             </LinearLayout>
@@ -474,16 +475,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:layout_margin="@dimen/_4sdp"
                                 android:background="@drawable/bg_save_btn"
+                                android:paddingStart="@dimen/_4sdp"
+                                android:paddingTop="@dimen/_2sdp"
+                                android:paddingEnd="@dimen/_4sdp"
+                                android:paddingBottom="@dimen/_3sdp"
                                 android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_8ssp"
                                 android:textStyle="bold"
-                                android:layout_margin="@dimen/_4sdp"
-                                android:paddingStart="@dimen/_4sdp"
-                                android:paddingEnd="@dimen/_4sdp"
-                                android:paddingBottom="@dimen/_3sdp"
-                                android:paddingTop="@dimen/_2sdp"
                                 tools:ignore="HardcodedText" />
 
                         </RelativeLayout>
@@ -501,46 +502,46 @@
 
                         <View
                             android:id="@+id/vw_serials"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@drawable/bg_card_series"
                             android:backgroundTint="#B3000000"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
 
                         <ProgressBar
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:id="@+id/pb_serials"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:progressDrawable="@drawable/pb_serials"
                             android:max="100"
                             android:progress="0"
-                            android:visibility="gone"/>
+                            android:progressDrawable="@drawable/pb_serials"
+                            android:visibility="gone" />
 
                         <ImageView
-                            app:tint="#41000000"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/pattern"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:contentDescription="@string/todo" />
+                            android:contentDescription="@string/todo"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/pattern"
+                            app:tint="#41000000" />
 
                         <androidx.nemosofts.material.ShimmerEffects
                             android:id="@+id/shimmer_view_serials"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:shimmer_duration="3500"
-                            app:shimmer_direction="left_to_right"
+                            android:layout_centerInParent="true"
                             app:shimmer_base_alpha="0"
-                            android:layout_centerInParent="true">
+                            app:shimmer_direction="left_to_right"
+                            app:shimmer_duration="3500">
 
                             <ImageView
-                                app:tint="#B3000000"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/pattern"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:contentDescription="@string/todo" />
+                                android:contentDescription="@string/todo"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/pattern"
+                                app:tint="#B3000000" />
 
                         </androidx.nemosofts.material.ShimmerEffects>
 
@@ -548,32 +549,32 @@
                             android:id="@+id/select_serials"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@drawable/focused_home_selector"
                             android:contentDescription="@string/todo"
                             android:focusable="true"
                             android:focusableInTouchMode="false"
-                            android:nextFocusUp="@id/iv_settings"
-                            android:background="@drawable/focused_home_selector">
+                            android:nextFocusUp="@id/iv_settings">
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="?attr/selectableItemBackground"/>
+                                android:background="?attr/selectableItemBackground" />
 
                             <LinearLayout
-                                android:orientation="vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:gravity="center"
+                                android:orientation="vertical"
                                 tools:ignore="RelativeOverlap,UseCompoundDrawables">
 
                                 <ImageView
                                     android:layout_width="@dimen/_50sdp"
                                     android:layout_height="@dimen/_50sdp"
-                                    android:src="@drawable/ic_series"
-                                    app:tint="@color/white"
                                     android:layout_marginBottom="@dimen/_2sdp"
-                                    android:contentDescription="@string/todo"/>
+                                    android:contentDescription="@string/todo"
+                                    android:src="@drawable/ic_series"
+                                    app:tint="@color/white" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -581,45 +582,45 @@
                                     android:text="@string/series_home"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/_15ssp"
-                                    android:textStyle="bold"/>
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:id="@+id/ll_series_auto_renew"
-                                android:background="@drawable/bg_home_last_up"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_30sdp"
                                 android:layout_alignParentBottom="true"
-                                android:gravity="center"
+                                android:background="@drawable/bg_home_last_up"
                                 android:focusable="false"
-                                android:focusableInTouchMode="false">
+                                android:focusableInTouchMode="false"
+                                android:gravity="center">
 
                                 <TextView
                                     android:id="@+id/tv_series_auto_renew"
-                                    android:layout_gravity="center"
-                                    android:text="Last updated: 3 secs ago"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_8ssp"
-                                    android:lines="1"
+                                    android:layout_gravity="center"
                                     android:layout_marginStart="@dimen/_5sdp"
                                     android:layout_marginEnd="@dimen/_5sdp"
-                                    tools:ignore="HardcodedText"/>
+                                    android:lines="1"
+                                    android:text="Last updated: 3 secs ago"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_8ssp"
+                                    tools:ignore="HardcodedText" />
 
                                 <ImageView
                                     android:id="@+id/iv_series_auto_renew"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:padding="@dimen/_2sdp"
                                     android:layout_width="@dimen/_30sdp"
                                     android:layout_height="@dimen/_20sdp"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:layout_marginEnd="@dimen/_5sdp"
                                     android:background="@drawable/bg_autorenew"
-                                    android:src="@drawable/ic_repeate"
                                     android:contentDescription="@string/todo"
                                     android:focusable="false"
                                     android:focusableInTouchMode="false"
+                                    android:padding="@dimen/_2sdp"
+                                    android:src="@drawable/ic_repeate"
                                     app:tint="?nsBlack" />
 
                             </LinearLayout>
@@ -629,16 +630,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:layout_margin="@dimen/_4sdp"
                                 android:background="@drawable/bg_save_btn"
+                                android:paddingStart="@dimen/_4sdp"
+                                android:paddingTop="@dimen/_2sdp"
+                                android:paddingEnd="@dimen/_4sdp"
+                                android:paddingBottom="@dimen/_3sdp"
                                 android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_8ssp"
                                 android:textStyle="bold"
-                                android:layout_margin="@dimen/_4sdp"
-                                android:paddingStart="@dimen/_4sdp"
-                                android:paddingEnd="@dimen/_4sdp"
-                                android:paddingBottom="@dimen/_3sdp"
-                                android:paddingTop="@dimen/_2sdp"
                                 tools:ignore="HardcodedText" />
 
                         </RelativeLayout>
@@ -648,127 +649,64 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_weight="0.7"
-                    android:baselineAligned="false">
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
 
                     <RelativeLayout
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:background="@drawable/bg_card_all"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_weight="1"
+                        android:background="@drawable/bg_card_all"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
                         tools:ignore="NestedWeights">
 
                         <View
                             android:id="@+id/vw_live_epg"
-                            android:background="@drawable/bg_card_all"
-                            android:backgroundTint="#B3000000"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:visibility="gone"/>
+                            android:background="@drawable/bg_card_all"
+                            android:backgroundTint="#B3000000"
+                            android:visibility="gone" />
 
                         <RelativeLayout
                             android:id="@+id/select_epg"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@drawable/focused_home_selector"
                             android:contentDescription="@string/todo"
                             android:focusable="true"
-                            android:focusableInTouchMode="false"
-                            android:background="@drawable/focused_home_selector">
+                            android:focusableInTouchMode="false">
 
                             <LinearLayout
-                                android:orientation="horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:gravity="center"
+                                android:orientation="horizontal"
                                 tools:ignore="UseCompoundDrawables">
 
                                 <ImageView
-                                    android:layout_marginEnd="@dimen/_3sdp"
                                     android:layout_width="@dimen/_18sdp"
                                     android:layout_height="@dimen/_18sdp"
+                                    android:layout_marginEnd="@dimen/_3sdp"
+                                    android:contentDescription="@string/todo"
                                     android:src="@drawable/ic_note"
-                                    app:tint="@color/white"
-                                    android:contentDescription="@string/todo"/>
+                                    app:tint="@color/white" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:lines="1"
                                     android:text="@string/live_with_epg_home"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/_10ssp"
-                                    android:textStyle="bold"
-                                    android:lines="1"/>
-
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="?attr/selectableItemBackground"  />
-
-                        </RelativeLayout>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:background="@drawable/bg_card_all"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false">
-
-                        <View
-                            android:id="@+id/vw_multiple_screen"
-                            android:background="@drawable/bg_card_all"
-                            android:backgroundTint="#B3000000"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone"/>
-
-                        <RelativeLayout
-                            android:id="@+id/select_multiple_screen"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@string/todo"
-                            android:focusable="true"
-                            android:focusableInTouchMode="false"
-                            android:background="@drawable/focused_home_selector">
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:gravity="center"
-                                tools:ignore="UseCompoundDrawables">
-
-                                <ImageView
-                                    android:layout_marginEnd="@dimen/_3sdp"
-                                    android:layout_width="@dimen/_18sdp"
-                                    android:layout_height="@dimen/_18sdp"
-                                    android:src="@drawable/ic_multiple_screen"
-                                    app:tint="@color/white"
-                                    android:padding="@dimen/_1sdp"
-                                    android:contentDescription="@string/todo"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/multiple_screen"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_10ssp"
-                                    android:textStyle="bold"
-                                    android:lines="1"/>
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
@@ -782,62 +720,125 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:background="@drawable/bg_card_all"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_weight="1"
+                        android:background="@drawable/bg_card_all"
                         android:focusable="false"
                         android:focusableInTouchMode="false">
 
                         <View
-                            android:id="@+id/vw_catch_up"
+                            android:id="@+id/vw_multiple_screen"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@drawable/bg_card_all"
                             android:backgroundTint="#B3000000"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
 
                         <RelativeLayout
-                            android:id="@+id/select_catch_up"
+                            android:id="@+id/select_multiple_screen"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@drawable/focused_home_selector"
                             android:contentDescription="@string/todo"
                             android:focusable="true"
-                            android:focusableInTouchMode="false"
-                            android:background="@drawable/focused_home_selector">
+                            android:focusableInTouchMode="false">
 
                             <LinearLayout
-                                android:orientation="horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:gravity="center"
-                                tools:ignore="TooManyViews,UseCompoundDrawables">
+                                android:orientation="horizontal"
+                                tools:ignore="UseCompoundDrawables">
 
                                 <ImageView
-                                    android:layout_marginEnd="@dimen/_3sdp"
                                     android:layout_width="@dimen/_18sdp"
                                     android:layout_height="@dimen/_18sdp"
-                                    android:src="@drawable/ic_timer_start"
-                                    app:tint="@color/white"
-                                    android:contentDescription="@string/todo"/>
+                                    android:layout_marginEnd="@dimen/_3sdp"
+                                    android:contentDescription="@string/todo"
+                                    android:padding="@dimen/_1sdp"
+                                    android:src="@drawable/ic_multiple_screen"
+                                    app:tint="@color/white" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/catch_up_home"
+                                    android:lines="1"
+                                    android:text="@string/multiple_screen"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/_10ssp"
-                                    android:textStyle="bold"
-                                    android:lines="1"/>
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="?attr/selectableItemBackground"/>
+                                android:background="?attr/selectableItemBackground" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_card_all"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false">
+
+                        <View
+                            android:id="@+id/vw_catch_up"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_card_all"
+                            android:backgroundTint="#B3000000"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/select_catch_up"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/focused_home_selector"
+                            android:contentDescription="@string/todo"
+                            android:focusable="true"
+                            android:focusableInTouchMode="false">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                tools:ignore="TooManyViews,UseCompoundDrawables">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_18sdp"
+                                    android:layout_height="@dimen/_18sdp"
+                                    android:layout_marginEnd="@dimen/_3sdp"
+                                    android:contentDescription="@string/todo"
+                                    android:src="@drawable/ic_timer_start"
+                                    app:tint="@color/white" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lines="1"
+                                    android:text="@string/catch_up_home"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?attr/selectableItemBackground" />
 
                         </RelativeLayout>
 

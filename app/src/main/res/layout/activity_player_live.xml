@@ -39,7 +39,7 @@
         android:layout_toStartOf="@+id/rl_dialog"
         android:layout_toEndOf="@+id/rl_dialog_rv">
 
-        <nemosofts.streambox.utils.player.CustomPlayerView
+        <com.zapstream.player.app.utils.player.CustomPlayerView
             android:id="@+id/nSoftsPlayerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
