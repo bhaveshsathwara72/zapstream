@@ -50,11 +50,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.onesignal.Continue;
 import com.onesignal.OneSignal;
-
-import org.jetbrains.annotations.Contract;
-
-import java.util.ArrayList;
-
 import com.zapstream.player.app.R;
 import com.zapstream.player.app.adapter.AdapterVideo;
 import com.zapstream.player.app.callback.Callback;
@@ -67,6 +62,10 @@ import com.zapstream.player.app.utils.advertising.AdManagerInterAdmob;
 import com.zapstream.player.app.utils.advertising.GDPRChecker;
 import com.zapstream.player.app.utils.advertising.RewardAdAdmob;
 import com.zapstream.player.app.utils.helper.SPHelper;
+
+import org.jetbrains.annotations.Contract;
+
+import java.util.ArrayList;
 
 public class LocalStorageActivity extends AppCompatActivity {
 
@@ -97,7 +96,7 @@ public class LocalStorageActivity extends AppCompatActivity {
         // NOTE: It's recommended to use a OneSignal In-App Message to prompt instead.
         OneSignal.getNotifications().requestPermission(false, Continue.none());
 
-        if(Boolean.TRUE.equals(checkPer())){
+        if (Boolean.TRUE.equals(checkPer())) {
             loadDownloadVideo();
         }
     }
@@ -113,7 +112,7 @@ public class LocalStorageActivity extends AppCompatActivity {
         itemVideoList = new ArrayList<>();
 
         findViewById(R.id.iv_picker_video).setOnClickListener(v -> {
-            if(Boolean.TRUE.equals(checkPer())) {
+            if (Boolean.TRUE.equals(checkPer())) {
                 openVideoPicker();
             }
         });
@@ -151,14 +150,14 @@ public class LocalStorageActivity extends AppCompatActivity {
 
     private void setAds() {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            if (isFinishing()){
+            if (isFinishing()) {
                 return;
             }
             DialogUtil.popupAdsDialog(LocalStorageActivity.this);
         }, 600);
 
-        if (DeviceUtils.isTvBox(this)){
-           return;
+        if (DeviceUtils.isTvBox(this)) {
+            return;
         }
 
         new GDPRChecker(LocalStorageActivity.this).check();
@@ -175,9 +174,9 @@ public class LocalStorageActivity extends AppCompatActivity {
 
     // Initialize the permission launcher
     private final ActivityResultLauncher<String> permissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-        if (Boolean.TRUE.equals(isGranted)){
+        if (Boolean.TRUE.equals(isGranted)) {
             loadDownloadVideo();
-            Toast.makeText(LocalStorageActivity.this, "Permission granted" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(LocalStorageActivity.this, "Permission granted", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(LocalStorageActivity.this, getResources().getString(R.string.err_cannot_use_features), Toast.LENGTH_SHORT).show();
         }
@@ -203,7 +202,7 @@ public class LocalStorageActivity extends AppCompatActivity {
                             MediaStore.MediaColumns.DATA
                     };
                     String selection = MediaStore.MediaColumns.MIME_TYPE + "=? OR " + MediaStore.MediaColumns.MIME_TYPE + "=?";
-                    String[] selectionArgs = { "video/mp4", "video/x-msvideo" }; // MIME type for mp4 and avi videos
+                    String[] selectionArgs = {"video/mp4", "video/x-msvideo"}; // MIME type for mp4 and avi videos
 
                     Cursor cursor = getContentResolver().query(uri, projection, selection, selectionArgs, null);
                     if (cursor != null) {
@@ -222,7 +221,7 @@ public class LocalStorageActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String s) {
-                if (!isFinishing()){
+                if (!isFinishing()) {
                     progressDialog.dismiss();
                     setAdapterToListview();
                 }
@@ -232,7 +231,7 @@ public class LocalStorageActivity extends AppCompatActivity {
 
     @OptIn(markerClass = UnstableApi.class)
     private void setAdapterToListview() {
-        if (!itemVideoList.isEmpty()){
+        if (!itemVideoList.isEmpty()) {
             adapterVideo = new AdapterVideo(itemVideoList, position -> {
                 Intent intent = new Intent(LocalStorageActivity.this, ExoPlayerActivity.class);
                 intent.putExtra("player_type", ExoPlayerActivity.TAG_TYPE_LOCAL);
@@ -294,7 +293,7 @@ public class LocalStorageActivity extends AppCompatActivity {
         if (!itemVideoList.isEmpty()) {
             rv.setVisibility(View.VISIBLE);
             frameLayout.setVisibility(View.GONE);
-            if (DeviceUtils.isTvBox(this)){
+            if (DeviceUtils.isTvBox(this)) {
                 rv.requestFocus();
             }
         } else {
@@ -344,7 +343,7 @@ public class LocalStorageActivity extends AppCompatActivity {
         @OptIn(markerClass = UnstableApi.class)
         @Override
         public void onActivityResult(ActivityResult result) {
-            if (isFinishing()){
+            if (isFinishing()) {
                 return;
             }
             if (result != null && result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {

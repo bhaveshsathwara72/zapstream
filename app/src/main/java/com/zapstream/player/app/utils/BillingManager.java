@@ -67,7 +67,6 @@ public class BillingManager {
                         }
                     }
 
-                    // If no subscription found, check INAPP
                     billingClient.queryPurchasesAsync(
                             QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build(),
                             (billingResultInapp, purchasesListInapp) -> {

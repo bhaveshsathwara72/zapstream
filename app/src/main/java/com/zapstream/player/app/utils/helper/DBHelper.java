@@ -11,11 +11,6 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.nemosofts.BuildConfig;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 import com.zapstream.player.app.item.ItemChannel;
 import com.zapstream.player.app.item.ItemDns;
 import com.zapstream.player.app.item.ItemMovies;
@@ -25,6 +20,11 @@ import com.zapstream.player.app.item.ItemUsersDB;
 import com.zapstream.player.app.item.ItemVideoDownload;
 import com.zapstream.player.app.utils.ApplicationUtil;
 import com.zapstream.player.app.utils.encrypter.EncryptData;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -294,7 +294,6 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_DNS_STREAM);
             db.execSQL(CREATE_TABLE_USERS);
             db.execSQL(CREATE_TABLE_DOWNLOAD_MOVIES);
-
             db.execSQL(CREATE_TABLE_FILTER_LIVE);
             db.execSQL(CREATE_TABLE_FILTER_MOVIES);
             db.execSQL(CREATE_TABLE_FILTER_SERIES);
@@ -324,9 +323,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(dropTable + TABLE_FILTER_SERIES);
         onCreate(db);
     }
+
     // FILTER --------------------------------------------------------------------------------------
     public void addToFilter(String table, String id) {
-        if (table == null || id == null){
+        if (table == null || id == null) {
             return;
         }
         ContentValues contentValues = new ContentValues();
@@ -337,7 +337,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @NonNull
     private Boolean checkFilter(String table, String id) {
-        if (table == null || id == null){
+        if (table == null || id == null) {
             return false;
         }
         try (Cursor cursor = db.query(table, columnsFilter, TAG_FILTER_ID + "=?" + TAG_AND
@@ -348,11 +348,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeFilter(String table, String id) {
-        if (table == null || id == null){
+        if (table == null || id == null) {
             return;
         }
         try {
-            if (Boolean.TRUE.equals(checkFilter(table, id))){
+            if (Boolean.TRUE.equals(checkFilter(table, id))) {
                 db.delete(table, TAG_FILTER_ID + "=" + id + TAG_AND + TAG_USER_ID
                         + "=" + spHelper.getUserId(), null
                 );
@@ -365,7 +365,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public String getFilterIDs(String table) {
         StringBuilder filterIDs = new StringBuilder();
-        if (table == null){
+        if (table == null) {
             return filterIDs.toString();
         }
         try (Cursor cursor = db.query(table, columnsFilter, TAG_USER_ID + "=" + spHelper.getUserId(),
@@ -408,7 +408,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // Live TV -------------------------------------------------------------------------------------
     @SuppressLint("Range")
     public void addToLive(String table, ItemChannel itemChannel, int limit) {
-        if (table == null){
+        if (table == null) {
             return;
         }
         try {
@@ -447,11 +447,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeLive(String table, String streamID) {
-        if (table == null || streamID == null){
+        if (table == null || streamID == null) {
             return;
         }
         try {
-            if (Boolean.TRUE.equals(checkLive(table, streamID))){
+            if (Boolean.TRUE.equals(checkLive(table, streamID))) {
                 db.delete(table, TAG_LIVE_ID + "=" + streamID + TAG_AND + TAG_USER_ID
                         + "=" + spHelper.getUserId(), null
                 );
@@ -462,7 +462,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean checkLive(String table, String streamID) {
-        if (table == null || streamID == null){
+        if (table == null || streamID == null) {
             return false;
         }
         String where = TAG_USER_ID + "=" + spHelper.getUserId() + TAG_AND + TAG_LIVE_ID + "=?";
@@ -478,7 +478,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public List<ItemMovies> getMovies(String table, boolean isOrder) {
         List<ItemMovies> arrayList = new ArrayList<>();
-        if (table == null){
+        if (table == null) {
             return arrayList;
         }
         String orderClause = isOrder ? " ASC" : "";
@@ -503,7 +503,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @SuppressLint("Range")
     public void addToMovie(String table, ItemMovies itemMovies, int limit) {
-        if (itemMovies == null || table == null){
+        if (itemMovies == null || table == null) {
             return;
         }
 
@@ -545,11 +545,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeMovie(String table, String streamID) {
-        if (table == null || streamID == null){
+        if (table == null || streamID == null) {
             return;
         }
         try {
-            if (Boolean.TRUE.equals(checkMovie(table, streamID))){
+            if (Boolean.TRUE.equals(checkMovie(table, streamID))) {
                 db.delete(table, TAG_USER_ID + "=" + spHelper.getUserId()
                         + TAG_AND + TAG_MOVIE_ID + "=" + streamID, null
                 );
@@ -560,7 +560,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean checkMovie(String table, String streamID) {
-        if (table == null || streamID == null){
+        if (table == null || streamID == null) {
             return false;
         }
         try (Cursor cursor = db.query(table, columnsMovie, TAG_USER_ID + "=" + spHelper.getUserId()
@@ -600,7 +600,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @SuppressLint("Range")
     public void addToSeries(String table, ItemSeries itemSeries, int limit) {
-        if (itemSeries == null || table == null){
+        if (itemSeries == null || table == null) {
             return;
         }
 
@@ -642,11 +642,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeFavSeries(String table, String seriesID) {
-        if (table == null || seriesID == null){
+        if (table == null || seriesID == null) {
             return;
         }
         try {
-            if (Boolean.TRUE.equals(checkSeries(table,seriesID))){
+            if (Boolean.TRUE.equals(checkSeries(table, seriesID))) {
                 db.delete(table, TAG_USER_ID + "=" + spHelper.getUserId()
                         + TAG_AND + TAG_SERIES_ID + "=" + seriesID, null
                 );
@@ -657,7 +657,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean checkSeries(String table, String seriesID) {
-        if (table == null || seriesID == null){
+        if (table == null || seriesID == null) {
             return false;
         }
         try (Cursor cursor = db.query(table, columnsSeries, TAG_USER_ID + "=" + spHelper.getUserId()
@@ -672,7 +672,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public List<ItemDns> loadDNS(String table) {
         List<ItemDns> arrayList = new ArrayList<>();
-        if (table == null){
+        if (table == null) {
             return arrayList;
         }
         try (Cursor cursor = db.query(table, columnsDns, null, null,
@@ -711,7 +711,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeAllDNS(String table) {
-        if (table == null){
+        if (table == null) {
             return;
         }
         try {
@@ -743,7 +743,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void addToSingleURL(ItemSingleURL itemSingle) {
-        if (itemSingle == null){
+        if (itemSingle == null) {
             return;
         }
 
@@ -762,7 +762,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeFromSingleURL(String singleID) {
-        if (singleID == null){
+        if (singleID == null) {
             return;
         }
         try {
@@ -833,7 +833,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeFromUser(String userID) {
-        if (userID == null){
+        if (userID == null) {
             return;
         }
         try {
@@ -858,7 +858,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Seek Movie ----------------------------------------------------------------------------------
     public int getSeek(String table, String streamID, String streamName) {
-        if (table == null || streamID == null || streamName == null){
+        if (table == null || streamID == null || streamName == null) {
             return 0;
         }
         String seekTo = "0";
@@ -892,7 +892,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public int getSeekFull(String table, String streamID, String streamName) {
-        if (table == null || streamID == null || streamName == null){
+        if (table == null || streamID == null || streamName == null) {
             return 0;
         }
         String seekTo = "0";
@@ -926,7 +926,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void addToSeek(String table, String currentPosition, String positionFull,
                           String streamID, String streamName) {
-        if (table == null || streamID == null || streamName == null){
+        if (table == null || streamID == null || streamName == null) {
             return;
         }
         String whereClause = TAG_USER_ID + TAG_AND_Q + TAG_MOVIE_STREAM_ID + TAG_AND_Q + TAG_MOVIE_TITLE + "=?";
@@ -958,7 +958,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean checkSeek(String table, String streamID, String streamName) {
-        if (table == null || streamID == null || streamName == null){
+        if (table == null || streamID == null || streamName == null) {
             return false;
         }
 
@@ -976,11 +976,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeSeekID(String table, String streamID, String streamName) {
-        if (table == null || streamID == null || streamName == null){
+        if (table == null || streamID == null || streamName == null) {
             return;
         }
         try {
-            if (Boolean.TRUE.equals(checkSeek(table,streamID, streamName))) {
+            if (Boolean.TRUE.equals(checkSeek(table, streamID, streamName))) {
                 String whereClause = TAG_USER_ID + TAG_AND_Q + TAG_MOVIE_STREAM_ID + TAG_AND_Q + TAG_MOVIE_TITLE + "=?";
                 String[] args = {
                         spHelper.getUserId(),
@@ -998,7 +998,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public List<ItemVideoDownload> loadDataDownload(String table) {
         ArrayList<ItemVideoDownload> arrayList = new ArrayList<>();
-        if (table == null){
+        if (table == null) {
             return arrayList;
         }
         try (Cursor cursor = db.query(table, columnsDownload, null, null,
@@ -1052,7 +1052,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Boolean checkDownload(String table, String id, String container) {
-        if (table == null || id == null || container == null){
+        if (table == null || id == null || container == null) {
             return false;
         }
         boolean isDownloaded;
@@ -1076,7 +1076,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void removeFromDownload(String table, String streamID) {
-        if (table == null || streamID == null){
+        if (table == null || streamID == null) {
             return;
         }
         try {
@@ -1088,7 +1088,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // clear Data ----------------------------------------------------------------------------------
     public void clearData(String table) {
-        if (table == null){
+        if (table == null) {
             return;
         }
         try {
@@ -1099,7 +1099,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public synchronized void close () {
+    public synchronized void close() {
         if (db != null && db.isOpen()) {
             db.close();
             super.close();

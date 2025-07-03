@@ -19,12 +19,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.MobileAds;
 import com.google.gson.JsonObject;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.io.File;
-import java.util.Objects;
-
 import com.zapstream.player.app.R;
 import com.zapstream.player.app.activity.DownloadService;
 import com.zapstream.player.app.callback.Callback;
@@ -36,14 +30,20 @@ import com.zapstream.player.app.utils.ApplicationUtil;
 import com.zapstream.player.app.utils.advertising.AdManagerInterAdmob;
 import com.zapstream.player.app.utils.advertising.GDPRChecker;
 import com.zapstream.player.app.utils.advertising.RewardAdAdmob;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.util.Objects;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class Helper {
 
     private final Context ctx;
-    private InterAdListener interAdListener;
     boolean isRewarded = false;
+    private InterAdListener interAdListener;
 
     public Helper(Context ctx) {
         this.ctx = ctx;
@@ -57,7 +57,8 @@ public class Helper {
     public void initializeAds() {
         boolean isEligible = !DeviceUtils.isTvBox(ctx)
                 && Boolean.TRUE.equals(Callback.getIsAdsStatus())
-                && Callback.AD_TYPE_ADMOB.equals(Callback.getAdNetwork());
+                && Callback.AD_TYPE_ADMOB.equals(Callback.getAdNetwork())
+                && !(new SPHelper(ctx).isPurchased());
 
         if (isEligible) {
             MobileAds.initialize(ctx, initializationStatus -> {
@@ -65,7 +66,7 @@ public class Helper {
         }
     }
 
-    public Object showBannerAd(LinearLayout linearLayout, Boolean isShowAd) {
+    public void showBannerAd(LinearLayout linearLayout, Boolean isShowAd) {
         if (isBannerAd() && Boolean.TRUE.equals(isShowAd) && Callback.AD_TYPE_ADMOB.equals(Callback.getAdNetwork())) {
             Bundle extras = new Bundle();
             AdView adViewAdmob = new AdView(ctx);
@@ -76,9 +77,7 @@ public class Helper {
             adViewAdmob.setAdSize(AdSize.BANNER);
             linearLayout.addView(adViewAdmob);
             adViewAdmob.loadAd(adRequest);
-            return adViewAdmob;
         }
-        return null;
     }
 
     public void showInterAd(final int pos, final String type) {
@@ -155,13 +154,8 @@ public class Helper {
     }
 
     public void showRewardAds(Boolean isShowAd, Boolean playWhenReady, RewardAdListener rewardAdListener) {
-        boolean isEligibleForAd = !DeviceUtils.isTvBox(ctx)
-                && NetworkUtils.isConnected(ctx)
-                && isShowAd
-                && Boolean.TRUE.equals(Callback.getIsAdsStatus())
-                && new GDPRChecker(ctx).canLoadAd();
 
-        if (isEligibleForAd) {
+        if (isRewardAds(isShowAd)) {
             loadRewardAds(rewardAdListener, playWhenReady);
         } else {
             rewardAdListener.isPlaying(playWhenReady);
@@ -172,7 +166,8 @@ public class Helper {
         return !DeviceUtils.isTvBox(ctx)
                 && NetworkUtils.isConnected(ctx)
                 && Boolean.TRUE.equals(Callback.getIsAdsStatus())
-                && new GDPRChecker(ctx).canLoadAd();
+                && new GDPRChecker(ctx).canLoadAd()
+                && !(new SPHelper(ctx).isPurchased());
     }
 
     private boolean isInterAd() {
@@ -180,9 +175,26 @@ public class Helper {
                 && NetworkUtils.isConnected(ctx)
                 && Boolean.TRUE.equals(Callback.getIsInterAd())
                 && Boolean.TRUE.equals(Callback.getIsAdsStatus())
-                && new GDPRChecker(ctx).canLoadAd();
+                && new GDPRChecker(ctx).canLoadAd()
+                && !(new SPHelper(ctx).isPurchased());
 
         if (!isEligible) {
+            return false;
+        }
+
+        Callback.setAdCount(Callback.getAdCount() + 1);
+        return Callback.getAdCount() % Callback.getInterstitialAdShow() == 0;
+    }
+
+    private boolean isRewardAds(Boolean isShowAd) {
+        boolean isEligibleForAd = !DeviceUtils.isTvBox(ctx)
+                && NetworkUtils.isConnected(ctx)
+                && isShowAd
+                && Boolean.TRUE.equals(Callback.getIsAdsStatus())
+                && new GDPRChecker(ctx).canLoadAd()
+                && !(new SPHelper(ctx).isPurchased());
+
+        if (!isEligibleForAd) {
             return false;
         }
 
@@ -214,9 +226,9 @@ public class Helper {
         }
 
         return new MultipartBody.Builder()
-            .setType(MultipartBody.FORM)
-            .addFormDataPart("data", EncrypterUtils.toBase64(jsObj.toString()))
-            .build();
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("data", EncrypterUtils.toBase64(jsObj.toString()))
+                .build();
     }
 
     public void download(final ItemVideoDownload itemDownload, String table) {
@@ -234,7 +246,7 @@ public class Helper {
         if (Boolean.FALSE.equals(new DBHelper(ctx).checkDownload(table, itemDownload.getStreamID(),
                 ApplicationUtil.containerExtension(itemDownload.getContainerExtension())))) {
 
-            if (DownloadService.getInstance() == null){
+            if (DownloadService.getInstance() == null) {
                 return;
             }
 

@@ -37,6 +37,9 @@ public class SubscriptionActivity extends AppCompatActivity implements BillingMa
 
         findViewById(R.id.btn_lifetime).setOnClickListener(v ->
                 billingManager.launchPurchaseFlow(this, BillingManager.LIFETIME_ID));
+
+        findViewById(R.id.btn_restore).setOnClickListener(v ->
+                billingManager.checkExistingPurchases());
     }
 
     @Override
@@ -85,7 +88,10 @@ public class SubscriptionActivity extends AppCompatActivity implements BillingMa
 
     @Override
     public void onPurchaseChecked(String purchasedProductId) {
-
+        if (BillingManager.YEARLY_SUB_ID.equals(purchasedProductId) || BillingManager.LIFETIME_ID.equals(purchasedProductId)) {
+            Toast.makeText(this, "Restored purchase: " + purchasedProductId, Toast.LENGTH_SHORT).show();
+            restartApp(this);
+        }
     }
 
     public void restartApp(Context context) {
