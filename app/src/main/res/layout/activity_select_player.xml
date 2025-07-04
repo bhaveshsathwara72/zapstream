@@ -108,6 +108,22 @@
                 android:textColor="?nsPrimary"
                 android:textSize="@dimen/_10ssp" />
 
+            <TextView
+                android:id="@+id/tv_restore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/focused_img_selector"
+                android:focusable="true"
+                android:focusableInTouchMode="false"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="@string/restore_purchase"
+                android:textAlignment="center"
+                android:textColor="@color/ns_blue_800"
+                android:textSize="@dimen/_10ssp" />
+
         </LinearLayout>
 
     </LinearLayout>

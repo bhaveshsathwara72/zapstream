@@ -270,5 +270,6 @@
     <string name="title_good_afternoon">Good afternoon,</string>
     <string name="title_good_morning">Good morning,</string>
     <string name="title_good_day">Good day,</string>
+    <string name="restore_purchase">Restore Purchase</string>
 
 </resources>
