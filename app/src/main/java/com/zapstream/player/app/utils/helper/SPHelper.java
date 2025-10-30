@@ -21,11 +21,6 @@ import java.util.concurrent.TimeUnit;
 
 public class SPHelper {
 
-    private static final String TAG = "SPHelper";
-    private final EncryptData encryptData;
-    private final SharedPreferences sharedPreferences;
-    private final SharedPreferences.Editor editor;
-
     public static final String TAG_SELECT_XUI = "select_xui";
     public static final String TAG_SELECT_STREAM = "select_stream";
     public static final String TAG_SELECT_PLAYLIST = "select_playlist";
@@ -34,16 +29,12 @@ public class SPHelper {
     public static final String TAG_SELECT_SINGLE = "select_single";
     public static final String TAG_IS_LOCAL_STORAGE = "is_local_storage";
     public static final String TAG_IS_TRIAL = "is_trial";
-
-    private static final String TAG_ABOUT = "is_about";
     public static final String TAG_ABOUT_EMAIL = "app_email";
     public static final String TAG_ABOUT_AUTHOR = "app_author";
     public static final String TAG_ABOUT_CONTACT = "app_contact";
     public static final String TAG_ABOUT_WEB = "app_website";
     public static final String TAG_ABOUT_DES = "app_description";
     public static final String TAG_ABOUT_DEV = "app_developedBy";
-
-    private static final String TAG_IS_SUPP_RTL = "is_rtl";
     public static final String TAG_IS_SUPP_MAINTENANCE = "is_maintenance";
     public static final String TAG_IS_SUPP_SCREEN = "is_screenshot";
     public static final String TAG_IS_SUPP_APK = "is_apk";
@@ -52,12 +43,13 @@ public class SPHelper {
     public static final String TAG_IS_SUPP_XUI_RADIO = "is_xui_radio";
     public static final String TAG_IS_SUPP_STREAM_DNS = "is_stream_dns";
     public static final String TAG_IS_SUPP_STREAM_RADIO = "is_stream_radio";
-
+    private static final String TAG = "SPHelper";
+    private static final String TAG_ABOUT = "is_about";
+    private static final String TAG_IS_SUPP_RTL = "is_rtl";
     private static final String TAG_FIRST_OPEN = "first_open";
     private static final String SHARED_PREF_AUTOLOGIN = "autologin";
     private static final String TAG_IS_LOGGED = "islogged";
     private static final String TAG_LOGIN_TYPE = "login_type";
-
     // user info
     private static final String TAG_USER_ID = "user_id";
     private static final String TAG_ANY_NAME = "any_name";
@@ -69,21 +61,23 @@ public class SPHelper {
     private static final String TAG_EXP_DATE = "exp_date";
     private static final String TAG_ACTIVE_CONNECTIONS = "active_cons";
     private static final String TAG_MAX_CONNECTIONS = "max_connections";
-
     // server info
     private static final String TAG_IS_XUI = "is_xui";
     private static final String TAG_URL_DATA = "url_data";
     private static final String TAG_PORT = "port";
     private static final String TAG_PORT_HTTPS = "https_port";
     private static final String TAG_SERVER_PROTOCOL = "server_protocol";
-
     // SUBSCRIPTION -----------------------------------------------------------------------------------------
     private static final String TAG_DEVICE_ID = "subscription_device_id";
     private static final String TAG_REGISTERED_DATE = "subscription_registered_date";
     private static final String TAG_TODAY_DATE = "subscription_today_date";
-
+    private static final String KEY_ACCESS_TIME = "access_time";
+    private static final String KEY_ADS_WATCHED = "ads_watched";
 
     private static final String TAG_ADULT_PASSWORD = "adult_password";
+    private final EncryptData encryptData;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor editor;
 
     public SPHelper(@NonNull Context ctx) {
         encryptData = new EncryptData(ctx);
@@ -210,9 +204,7 @@ public class SPHelper {
     private String buildServerUrl(String endpoint) {
         String protocol = sharedPreferences.getString(TAG_SERVER_PROTOCOL, "http");
         String url = sharedPreferences.getString(TAG_URL_DATA, "");
-        String port = protocol.equals("http") ?
-                sharedPreferences.getString(TAG_PORT, "") :
-                sharedPreferences.getString(TAG_PORT_HTTPS, "");
+        String port = protocol.equals("http") ? sharedPreferences.getString(TAG_PORT, "") : sharedPreferences.getString(TAG_PORT_HTTPS, "");
         return protocol + "://" + url + ":" + port + "/" + endpoint;
     }
 
@@ -227,9 +219,7 @@ public class SPHelper {
     public String getServerURLSub() {
         String protocol = sharedPreferences.getString(TAG_SERVER_PROTOCOL, "http");
         String url = sharedPreferences.getString(TAG_URL_DATA, "");
-        String port = protocol.equals("http") ?
-                sharedPreferences.getString(TAG_PORT, "") :
-                sharedPreferences.getString(TAG_PORT_HTTPS, "");
+        String port = protocol.equals("http") ? sharedPreferences.getString(TAG_PORT, "") : sharedPreferences.getString(TAG_PORT_HTTPS, "");
         return protocol + "://" + url + ":" + port;
     }
 
@@ -252,8 +242,7 @@ public class SPHelper {
     }
 
     // AboutDetails --------------------------------------------------------------------------------
-    public void setAboutDetails(String email, String author, String contact, String website,
-                                String description, String developed) {
+    public void setAboutDetails(String email, String author, String contact, String website, String description, String developed) {
         editor.putString(TAG_ABOUT_EMAIL, email);
         editor.putString(TAG_ABOUT_AUTHOR, author);
         editor.putString(TAG_ABOUT_CONTACT, contact);
@@ -269,6 +258,29 @@ public class SPHelper {
         editor.putString(TAG_REGISTERED_DATE, registeredDate);
         editor.putString(TAG_TODAY_DATE, todayDate);
         editor.apply();
+    }
+
+
+    public void grantAccessFor24Hours() {
+        long expiry = System.currentTimeMillis() + (24 * 60 * 60 * 1000);
+        editor.putLong(KEY_ACCESS_TIME, expiry);
+        editor.putInt(KEY_ADS_WATCHED, 0);
+        editor.apply();
+    }
+
+    public int getAdsWatched() {
+        return sharedPreferences.getInt(KEY_ADS_WATCHED, 0);
+
+    }
+
+    public void setAdsWatched(int count) {
+        editor.putInt(KEY_ADS_WATCHED, count);
+        editor.apply();
+    }
+
+    public boolean hasActiveAccess() {
+        long expiry = sharedPreferences.getLong(KEY_ACCESS_TIME, 0);
+        return System.currentTimeMillis() < expiry;
     }
 
     public String getDeviceId() {
@@ -317,8 +329,7 @@ public class SPHelper {
     }
 
     // isSupported ---------------------------------------------------------------------------------
-    public void setIsSupportedApp(Boolean isRtl, Boolean isMaintenance,
-                                  Boolean isScreenshot, Boolean isApk, Boolean isVpn) {
+    public void setIsSupportedApp(Boolean isRtl, Boolean isMaintenance, Boolean isScreenshot, Boolean isApk, Boolean isVpn) {
         editor.putBoolean(TAG_IS_SUPP_RTL, isRtl);
         editor.putBoolean(TAG_IS_SUPP_MAINTENANCE, isMaintenance);
         editor.putBoolean(TAG_IS_SUPP_SCREEN, isScreenshot);
@@ -327,8 +338,7 @@ public class SPHelper {
         editor.apply();
     }
 
-    public void setIsSupported(Boolean isXuiDns, Boolean isRadio, Boolean isStreamDns,
-                               Boolean isStreamRadio, Boolean isLocalStorage, Boolean isTrial) {
+    public void setIsSupported(Boolean isXuiDns, Boolean isRadio, Boolean isStreamDns, Boolean isStreamRadio, Boolean isLocalStorage, Boolean isTrial) {
         editor.putBoolean(TAG_IS_SUPP_XUI_DNS, isXuiDns);
         editor.putBoolean(TAG_IS_SUPP_XUI_RADIO, isRadio);
         editor.putBoolean(TAG_IS_SUPP_STREAM_DNS, isStreamDns);
@@ -502,8 +512,7 @@ public class SPHelper {
         return sharedPreferences.getBoolean(type, true);
     }
 
-    public void setIsSelect(Boolean xui, Boolean stream, Boolean playlist, Boolean deviceID,
-                            Boolean single, Boolean activation) {
+    public void setIsSelect(Boolean xui, Boolean stream, Boolean playlist, Boolean deviceID, Boolean single, Boolean activation) {
         editor.putBoolean(TAG_SELECT_XUI, xui);
         editor.putBoolean(TAG_SELECT_STREAM, stream);
         editor.putBoolean(TAG_SELECT_PLAYLIST, playlist);
@@ -621,22 +630,22 @@ public class SPHelper {
         return sharedPreferences.getBoolean("auto_update_live", true);
     }
 
-    public boolean getIsUpdateMovies() {
-        return sharedPreferences.getBoolean("auto_update_movies", true);
-    }
-
-    public boolean getIsUpdateSeries() {
-        return sharedPreferences.getBoolean("auto_update_series", true);
-    }
-
     public void setIsUpdateLive(boolean state) {
         editor.putBoolean("auto_update_live", state);
         editor.apply();
     }
 
+    public boolean getIsUpdateMovies() {
+        return sharedPreferences.getBoolean("auto_update_movies", true);
+    }
+
     public void setIsUpdateMovies(boolean state) {
         editor.putBoolean("auto_update_movies", state);
         editor.apply();
+    }
+
+    public boolean getIsUpdateSeries() {
+        return sharedPreferences.getBoolean("auto_update_series", true);
     }
 
     public void setIsUpdateSeries(boolean state) {
@@ -697,13 +706,13 @@ public class SPHelper {
         editor.apply();
     }
 
+    public String getTrialNote() {
+        return sharedPreferences.getString("trial_note", "");
+    }
+
     public void setTrialNote(String note) {
         editor.putString("trial_note", note);
         editor.apply();
-    }
-
-    public String getTrialNote() {
-        return sharedPreferences.getString("trial_note", "");
     }
 
     public int getPendingDays() {

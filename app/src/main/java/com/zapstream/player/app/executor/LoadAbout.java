@@ -2,7 +2,7 @@ package com.zapstream.player.app.executor;
 
 import android.content.Context;
 
-import androidx.nemosofts.Envato;
+import androidx.nemosofts.Verification;
 import androidx.nemosofts.utils.DeviceUtils;
 
 import org.json.JSONArray;
@@ -27,7 +27,7 @@ import com.zapstream.player.app.utils.helper.SPHelper;
 public class LoadAbout extends AsyncTaskExecutor<String, String, String> {
 
     private final DBHelper dbHelper;
-    private final Envato envato;
+    private final Verification envato;
     private final Helper helper;
     private final SPHelper spHelper;
     private final AboutListener aboutListener;
@@ -43,7 +43,7 @@ public class LoadAbout extends AsyncTaskExecutor<String, String, String> {
         this.context = context;
         helper = new Helper(context);
         spHelper = new SPHelper(context);
-        envato = new Envato(context);
+        envato = new Verification(context);
         dbHelper = new DBHelper(context);
     }
 
@@ -89,9 +89,9 @@ public class LoadAbout extends AsyncTaskExecutor<String, String, String> {
                         spHelper.setAboutDetails(email, author, contact, website, description, developed);
 
                         // Envato ------------------------------------------------------------------
-                        String apikey = c.getString("envato_api_key");
-                        if (!apikey.isEmpty()) {
-                            envato.setEnvatoKEY(apikey);
+                        String verificationCode = c.getString("envato_api_key");
+                        if (!verificationCode.isEmpty()){
+                            envato.setVerificationCode(verificationCode);
                         } else {
                             spHelper.setAboutDetails(false);
                         }

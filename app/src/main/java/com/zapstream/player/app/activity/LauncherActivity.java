@@ -24,8 +24,8 @@ import androidx.media3.datasource.DefaultHttpDataSource;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.exoplayer.source.MediaSource;
 import androidx.media3.exoplayer.source.ProgressiveMediaSource;
-import androidx.nemosofts.EnvatoProduct;
-import androidx.nemosofts.LauncherListener;
+import androidx.nemosofts.VerificationListener;
+import androidx.nemosofts.VerificationTask;
 import androidx.nemosofts.theme.ThemeEngine;
 import androidx.nemosofts.utils.NetworkUtils;
 
@@ -44,7 +44,7 @@ import com.zapstream.player.app.utils.IfSupported;
 import com.zapstream.player.app.utils.helper.Helper;
 import com.zapstream.player.app.utils.helper.SPHelper;
 
-public class LauncherActivity extends AppCompatActivity implements LauncherListener {
+public class LauncherActivity extends AppCompatActivity implements VerificationListener {
 
     Helper helper;
     SPHelper spHelper;
@@ -371,7 +371,7 @@ public class LauncherActivity extends AppCompatActivity implements LauncherListe
     }
 
     private void setSaveData() {
-        new EnvatoProduct(LauncherActivity.this, LauncherActivity.this).execute();
+        new VerificationTask(LauncherActivity.this, LauncherActivity.this).execute();
     }
 
     @Override

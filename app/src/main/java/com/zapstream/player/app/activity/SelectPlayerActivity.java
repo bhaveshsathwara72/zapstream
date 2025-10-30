@@ -1,9 +1,14 @@
 package com.zapstream.player.app.activity;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -29,6 +34,8 @@ import com.zapstream.player.app.dialog.DialogUtil;
 import com.zapstream.player.app.item.ItemSelect;
 import com.zapstream.player.app.utils.ApplicationUtil;
 import com.zapstream.player.app.utils.IfSupported;
+import com.zapstream.player.app.utils.advertising.RewardAdAdmob;
+import com.zapstream.player.app.utils.helper.Helper;
 import com.zapstream.player.app.utils.helper.SPHelper;
 
 import java.util.ArrayList;
@@ -118,11 +125,17 @@ public class SelectPlayerActivity extends AppCompatActivity {
             arrayList.add(new ItemSelect(getString(R.string._local_storage), R.drawable.ic_hard_drive, true));
         }
 
+        if (Boolean.TRUE.equals(Callback.getIsAdsStatus()) && !(trialDaysLeft > 0 || spHelper.isPurchased() || spHelper.hasActiveAccess())) {
+            RewardAdAdmob rewardAdAdmob = new RewardAdAdmob(getApplicationContext());
+            rewardAdAdmob.createAd();
+        }
+
+
         AdapterSelect adapterSelect = new AdapterSelect(arrayList, (item, position) -> {
-            if (trialDaysLeft > 0 || spHelper.isPurchased()) {
+            if (trialDaysLeft > 0 || spHelper.isPurchased() || spHelper.hasActiveAccess()) {
                 select(arrayList.get(position).getTitle());
             } else {
-                startActivity(new Intent(this, SubscriptionActivity.class));
+                showTrialPopup();
             }
         });
         rv.setAdapter(adapterSelect);
@@ -130,6 +143,51 @@ public class SelectPlayerActivity extends AppCompatActivity {
             rv.requestFocus();
         }
     }
+
+    private void showTrialPopup() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        SPHelper spHelper = new SPHelper(this);
+
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_watch_ads, null);
+        builder.setView(view);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        Button btnWatchAds = view.findViewById(R.id.btnWatchAds);
+        Button btnPurchase = view.findViewById(R.id.btnPurchase);
+        String text = "Watch " + (2 - spHelper.getAdsWatched()) + " Rewarded Ads (1 Day Access)";
+        btnWatchAds.setText(text);
+        btnWatchAds.setOnClickListener(v -> {
+            dialog.dismiss();
+            new Helper(this).showRewardAdsForAccess(playWhenReady -> {
+                if (playWhenReady) {
+                    if (spHelper.getAdsWatched() == 1) {
+                        spHelper.grantAccessFor24Hours();
+                        restartApp(this);
+                    } else {
+                        spHelper.setAdsWatched(spHelper.getAdsWatched() + 1);
+                    }
+                }
+            });
+        });
+
+        btnPurchase.setOnClickListener(v -> {
+            dialog.dismiss();
+            startActivity(new Intent(this, SubscriptionActivity.class));
+        });
+    }
+
+    public void restartApp(Context context) {
+        Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+
+        if (intent != null) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivity(intent);
+            Runtime.getRuntime().exit(0); // Kill the current process
+        }
+    }
+
 
     private void setupBackPressHandler() {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {

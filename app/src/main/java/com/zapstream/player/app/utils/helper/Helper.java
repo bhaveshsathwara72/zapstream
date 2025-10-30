@@ -162,6 +162,12 @@ public class Helper {
         }
     }
 
+    public void showRewardAdsForAccess(RewardAdListener rewardAdListener) {
+        if (isRewardWatchAds(true)) {
+            loadRewardAds(rewardAdListener, true);
+        }
+    }
+
     private boolean isBannerAd() {
         return !DeviceUtils.isTvBox(ctx)
                 && NetworkUtils.isConnected(ctx)
@@ -200,6 +206,15 @@ public class Helper {
 
         Callback.setAdCount(Callback.getAdCount() + 1);
         return Callback.getAdCount() % Callback.getInterstitialAdShow() == 0;
+    }
+
+    private boolean isRewardWatchAds(Boolean isShowAd) {
+        return !DeviceUtils.isTvBox(ctx)
+                && NetworkUtils.isConnected(ctx)
+                && isShowAd
+                && Boolean.TRUE.equals(Callback.getIsAdsStatus())
+                && new GDPRChecker(ctx).canLoadAd()
+                && !(new SPHelper(ctx).isPurchased());
     }
 
     public RequestBody getAPIRequestNSofts(String helperName, String reportTitle,

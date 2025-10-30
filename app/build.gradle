@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.zapstream.player.app'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.zapstream.player.app"
         minSdk 23
-        targetSdk 35
+        targetSdk 36
         versionCode 7
         versionName "1.0.0"
 
@@ -46,6 +46,12 @@ android {
     lint {
         disable 'OldTargetApi', 'GradleDependency', 'GradleDynamicVersion'
     }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
 }
 
 dependencies {
@@ -70,5 +76,8 @@ dependencies {
         exclude group: "androidx.media3", module: "media3-exoplayer-dash"
         exclude group: "androidx.media3", module: "media3-exoplayer-hls"
     }
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
     implementation fileTree(dir: "libs", include: ["lib-*.aar"])
 }
