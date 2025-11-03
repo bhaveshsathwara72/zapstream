@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
-        android:text="Continue"
+        android:text="Your 7-day trial has ended"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
