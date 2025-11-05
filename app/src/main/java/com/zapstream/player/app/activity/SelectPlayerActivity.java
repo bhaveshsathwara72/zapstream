@@ -156,7 +156,7 @@ public class SelectPlayerActivity extends AppCompatActivity {
 
         Button btnWatchAds = view.findViewById(R.id.btnWatchAds);
         Button btnPurchase = view.findViewById(R.id.btnPurchase);
-        String text = "Watch " + (2 - spHelper.getAdsWatched()) + " Rewarded Ads (1 Day Access)";
+        String text = "Watch " + (2 - spHelper.getAdsWatched()) + " Ads";
         btnWatchAds.setText(text);
         btnWatchAds.setOnClickListener(v -> {
             dialog.dismiss();

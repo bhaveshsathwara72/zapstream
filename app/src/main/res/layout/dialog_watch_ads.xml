@@ -13,8 +13,19 @@
         android:paddingBottom="16dp"
         android:text="Your 7-day trial has ended"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/ns_dark_primary"
         android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="You can watch 2 rewarded ads to continue to use app for 1 day."
+        android:textAlignment="center"
+        android:textColor="@color/ns_grey_title"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <Button
@@ -23,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:background="@drawable/bg_btn_primary"
-        android:text="Watch 2 Rewarded Ads (1 Day Access)"
+        android:text="Watch Ads"
         android:textColor="@android:color/white" />
 
     <Button
@@ -32,6 +43,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_btn_primary"
         android:text="Subscribe now"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
 
 </LinearLayout>
